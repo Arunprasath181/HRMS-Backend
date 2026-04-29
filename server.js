@@ -3,7 +3,10 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 
-dotenv.config();
+const result = dotenv.config();
+if (result.error) {
+  console.warn("Warning: .env file not found or could not be loaded. Environment variables may be missing.");
+}
 connectDB();
 
 const app = express();
